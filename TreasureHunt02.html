@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Treasure Hunt - 挑战1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>挑战 1：拼图游戏</h2>
+  <p>将打乱的图片拼回正确的形状，完成后将揭晓下一线索。</p>
+  
+  <!-- 拼图容器 -->
+  <div id="puzzle-container">
+    <!-- 示例：九宫格拼图块，占位的 div 或 img 元素 -->
+    <div class="puzzle-piece" draggable="true" data-id="1"></div>
+    <div class="puzzle-piece" draggable="true" data-id="2"></div>
+    <div class="puzzle-piece" draggable="true" data-id="3"></div>
+    <!-- ...继续列出所有拼图块 -->
+    <div class="puzzle-piece" draggable="true" data-id="9"></div>
+  </div>
+  
+  <!-- 隐藏的下一线索提示，在拼图完成时显示 -->
+  <div id="next-hint" style="display:none; margin-top: 20px;">
+    <p>恭喜拼图完成！下一线索：前往 <strong>4 楼洗衣房</strong> 寻找下一幅 Artcode。</p>
+  </div>
+  
+  <script>
+    // 简要拼图游戏逻辑示意（伪代码）
+    const pieces = document.querySelectorAll('.puzzle-piece');
+    pieces.forEach(piece => {
+      piece.addEventListener('dragstart', onDragStart);
+      piece.addEventListener('drop', onDrop);
+      piece.addEventListener('dragover', event => event.preventDefault());
+    });
+    // onDragStart 和 onDrop 函数需要实现拖拽交换逻辑
+    // 完成拼图后，显示下一线索提示
+    function showNextHint() {
+      document.getElementById('next-hint').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

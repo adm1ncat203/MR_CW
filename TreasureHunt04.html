@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Treasure Hunt - 奖励</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- 可选：引入动画库，如 Animate.css 或粒子效果库 -->
+</head>
+<body>
+  <h2 class="congrats">🎉 恭喜通关！ 🎉</h2>
+  <p>你找到了所有线索，获得了宝藏！</p>
+  <!-- 显示奖励图片，例如奖杯或自定义图片 -->
+  <img src="prize.png" alt="Prize Image" class="prize-img" />
+  
+  <!-- 粒子/闪光特效: 可使用 canvas 或现成库实现 -->
+  <canvas id="confetti-canvas"></canvas>
+  
+  <script>
+    // 示例：使用一个简单的库触发五彩纸屑特效（如 canvas-confetti）
+    // 如果已引入 confetti 库，例如:
+    // <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.min.js"></script>
+    // 则可以调用如下：
+    /*
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    */
+    
+    // 或者使用 CSS 动画实现文字闪烁/放大效果（在 CSS 文件中定义动画）
+  </script>
+</body>
+</html>
