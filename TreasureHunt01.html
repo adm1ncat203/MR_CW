@@ -1,15 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Treasure Hunt - 线索1</title>
-  <link rel="stylesheet" href="style.css" /> <!-- 引用统一样式表 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treasure Hunt - Clue 1</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #28a745;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #007BFF;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    #hidden-hint {
+      display: none;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .highlight {
+      color: #ff5722;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Treasure Hunt 寻宝游戏</h1>
-  <h2>线索 1</h2>
-  <p>欢迎来到寻宝游戏！</p>
-  <p>线索：前往公寓 <strong>2 楼健身房</strong>，寻找下一幅 Artcode。</p>
-  <!-- 可以加一个相关的小图片或图标作为点缀，例如放大镜或地图标识 -->
+  <div class="container">
+    <h1>Treasure Hunt</h1>
+    <h2>Clue 1</h2>
+    <p>Welcome to your treasure hunt adventure!</p>
+    <button class="btn" onclick="revealHint()">Reveal the Clue</button>
+    <div id="hidden-hint">
+      <p>On the way to the land of fitness and strength, your next secret awaits.</p>
+      <p>Head to the <span class="highlight">Gym on the 2nd floor of the apartment</span> and look for the second
+        Artcode!</p>
+    </div>
+  </div>
+
+  <script>
+    function revealHint() {
+      document.getElementById('hidden-hint').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
