@@ -1,34 +1,168 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Treasure Hunt - 奖励</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- 可选：引入动画库，如 Animate.css 或粒子效果库 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treasure Hunt - Reward</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      transition: background-color 0.5s;
+    }
+
+    .container {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #ff5722;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    .btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    .btn.clicked {
+      transform: scale(1.2);
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 60%);
+      animation: shine 2s infinite;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .btn.glow::after {
+      opacity: 1;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 12px;
+      background-color: red;
+      opacity: 0.8;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      animation: fall 4s linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h2 class="congrats">🎉 恭喜通关！ 🎉</h2>
-  <p>你找到了所有线索，获得了宝藏！</p>
-  <!-- 显示奖励图片，例如奖杯或自定义图片 -->
-  <img src="prize.png" alt="Prize Image" class="prize-img" />
-  
-  <!-- 粒子/闪光特效: 可使用 canvas 或现成库实现 -->
-  <canvas id="confetti-canvas"></canvas>
-  
+  <div class="container">
+    <h1>🎉 Congratulations, Treasure Hunter! 🎉</h1>
+    <img src="./pic/1_1.png" alt="Reward Image">
+    <p>You have successfully completed the Treasure Hunt!</p>
+    <button class="btn" id="celebrate-btn" onclick="celebrate()">Celebrate!</button>
+  </div>
+
   <script>
-    // 示例：使用一个简单的库触发五彩纸屑特效（如 canvas-confetti）
-    // 如果已引入 confetti 库，例如:
-    // <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.min.js"></script>
-    // 则可以调用如下：
-    /*
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-    */
-    
-    // 或者使用 CSS 动画实现文字闪烁/放大效果（在 CSS 文件中定义动画）
+    function celebrate() {
+      const btn = document.getElementById('celebrate-btn');
+
+      // scatter 300 confetti
+      for (let i = 0; i < 300; i++) {
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = Math.random() * -100 + 'px';
+        confetti.style.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
+        confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+
+      // button zoom in animation
+      btn.classList.add('clicked');
+      setTimeout(() => btn.classList.remove('clicked'), 300);
+
+      // button iris effect
+      btn.classList.add('glow');
+
+      // background flickering
+      document.body.style.backgroundColor = '#fffacd';
+      setTimeout(() => {
+        document.body.style.backgroundColor = '#e6f2ff';
+      }, 400);
+
+      // pop-up congratulations
+      setTimeout(() => {
+        alert("Well done, adventurer! You found the treasure!");
+      }, 200);
+    }
   </script>
 </body>
+
 </html>
