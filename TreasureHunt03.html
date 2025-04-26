@@ -1,45 +1,105 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Treasure Hunt - 挑战2</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treasure Hunt - Puzzle</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #28a745;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .result-container {
+      margin-top: 20px;
+      display: none;
+      font-size: 16px;
+    }
+
+    .highlight {
+      color: #ff5722;
+      font-weight: bold;
+    }
+  </style>
 </head>
+
 <body>
-  <h2>挑战 2：知识问答</h2>
-  <p>回答以下问题以获取最终奖励的线索：</p>
-  
-  <!-- 问题和选项 -->
-  <div id="quiz">
-    <p>问题：洗衣房的洗衣机有多少台？</p>
-    <ul>
-      <li><label><input type="radio" name="q1" value="A"> A. 1 台</label></li>
-      <li><label><input type="radio" name="q1" value="B"> B. 2 台</label></li>
-      <li><label><input type="radio" name="q1" value="C"> C. 3 台</label></li>
-    </ul>
-    <button onclick="checkAnswer()">提交答案</button>
+  <div class="container">
+    <h1>Treasure Hunt</h1>
+    <p><strong>Butterfly Puzzle:</strong> How many horizontal lines are inside the butterfly image?</p>
+
+    <form id="puzzle-form">
+      <input type="number" id="butterfly-answer" placeholder="Enter a number" min="0">
+      <button type="button" class="btn" onclick="checkButterflyAnswer()">Submit Answer</button>
+    </form>
+
+    <div class="result-container" id="resultContainer">
+      <p id="resultText"></p>
+      <p id="nextStep"></p>
+    </div>
   </div>
-  
-  <!-- 隐藏的提示，回答正确时显示 -->
-  <div id="final-hint" style="display:none; margin-top: 20px;">
-    <p>回答正确！最终线索：扫描 <strong>我房间门口</strong> 的 Artcode 获取你的奖励！</p>
-  </div>
-  
+
   <script>
-    function checkAnswer() {
-      // 获取选中的选项
-      const selected = document.querySelector('input[name="q1"]:checked');
-      if (selected) {
-        if (selected.value === "B") {  // 假设正确答案是B选项
-          document.getElementById('quiz').style.display = 'none';
-          document.getElementById('final-hint').style.display = 'block';
-        } else {
-          alert("回答不正确，请再试一次！");
-        }
+    function checkButterflyAnswer() {
+      const input = document.getElementById('butterfly-answer').value;
+      if (parseInt(input) === 10) {
+        document.getElementById('resultText').innerHTML = "Correct!";
+        document.getElementById('nextStep').innerHTML = "Now, head to the <span class='highlight'>10th Floor</span> to find the treasure! :)";
       } else {
-        alert("请先选择一个答案！");
+        document.getElementById('resultText').innerHTML = "Incorrect. Try again!";
+        document.getElementById('nextStep').innerHTML = "";
       }
+      document.getElementById('resultContainer').style.display = 'block';
     }
   </script>
 </body>
+
 </html>

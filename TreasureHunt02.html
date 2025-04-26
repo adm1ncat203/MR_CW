@@ -1,42 +1,120 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Treasure Hunt - 挑战1</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treasure Hunt - Puzzle</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #28a745;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .result-container {
+      margin-top: 20px;
+      display: none;
+      font-size: 16px;
+    }
+
+    .highlight {
+      color: #ff5722;
+      font-weight: bold;
+    }
+
+    .options {
+      text-align: left;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
+
 <body>
-  <h2>挑战 1：拼图游戏</h2>
-  <p>将打乱的图片拼回正确的形状，完成后将揭晓下一线索。</p>
-  
-  <!-- 拼图容器 -->
-  <div id="puzzle-container">
-    <!-- 示例：九宫格拼图块，占位的 div 或 img 元素 -->
-    <div class="puzzle-piece" draggable="true" data-id="1"></div>
-    <div class="puzzle-piece" draggable="true" data-id="2"></div>
-    <div class="puzzle-piece" draggable="true" data-id="3"></div>
-    <!-- ...继续列出所有拼图块 -->
-    <div class="puzzle-piece" draggable="true" data-id="9"></div>
+  <div class="container">
+    <h1>Treasure Hunt</h1>
+    <p><strong>Gym Quiz:</strong> Which equipment do you usually run on? 🏃‍</p>
+
+    <form id="puzzle-form">
+      <div class="options">
+        <label><input type="radio" name="gym" value="Treadmill"> Treadmill</label><br>
+        <label><input type="radio" name="gym" value="Bench Press"> Bench Press</label><br>
+        <label><input type="radio" name="gym" value="Squat Rack"> Squat Rack</label><br>
+      </div>
+      <button type="button" class="btn" onclick="checkPuzzle()">Submit Answer</button>
+    </form>
+
+    <div class="result-container" id="resultContainer">
+      <p id="resultText"></p>
+      <p id="nextStep"></p>
+    </div>
   </div>
-  
-  <!-- 隐藏的下一线索提示，在拼图完成时显示 -->
-  <div id="next-hint" style="display:none; margin-top: 20px;">
-    <p>恭喜拼图完成！下一线索：前往 <strong>4 楼洗衣房</strong> 寻找下一幅 Artcode。</p>
-  </div>
-  
+
   <script>
-    // 简要拼图游戏逻辑示意（伪代码）
-    const pieces = document.querySelectorAll('.puzzle-piece');
-    pieces.forEach(piece => {
-      piece.addEventListener('dragstart', onDragStart);
-      piece.addEventListener('drop', onDrop);
-      piece.addEventListener('dragover', event => event.preventDefault());
-    });
-    // onDragStart 和 onDrop 函数需要实现拖拽交换逻辑
-    // 完成拼图后，显示下一线索提示
-    function showNextHint() {
-      document.getElementById('next-hint').style.display = 'block';
+    function checkPuzzle() {
+      const selected = document.querySelector('input[name="gym"]:checked');
+      if (!selected) {
+        alert("Please select an answer.");
+        return;
+      }
+      if (selected.value === "Treadmill") {
+        document.getElementById('resultText').innerHTML = "Correct!";
+        document.getElementById('nextStep').innerHTML = "Rumour has it that there's <b>an unique butterfly</b> in the <span class='highlight'>laundry room on the 4th floor</span>, go there and check it out! ;)";
+      } else {
+        document.getElementById('resultText').innerHTML = "Incorrect. Try again!";
+        document.getElementById('nextStep').innerHTML = "";
+      }
+      document.getElementById('resultContainer').style.display = 'block';
     }
   </script>
 </body>
+
 </html>
