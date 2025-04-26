@@ -29,6 +29,7 @@
       width: 90%;
       max-width: 600px;
       text-align: center;
+      position: relative;
       z-index: 1;
     }
 
@@ -109,7 +110,7 @@
       left: 0;
       pointer-events: none;
       animation: fall 4s linear forwards;
-      z-index: 0;
+      z-index: 9999;
     }
 
     @keyframes fall {
@@ -144,7 +145,7 @@
         setTimeout(() => confetti.remove(), 5000);
       }
 
-      // button zoom in animation
+      // button zoom in effect
       btn.classList.add('clicked');
       setTimeout(() => btn.classList.remove('clicked'), 300);
 
