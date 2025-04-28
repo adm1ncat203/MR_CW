@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treasure Hunt - Puzzle</title>
+  <title>Treasure Hunter - Puzzle1</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -80,7 +80,7 @@
 
 <body>
   <div class="container">
-    <h1>Treasure Hunt</h1>
+    <h1>Treasure Hunter</h1>
     <p><strong>Gym Quiz:</strong> Which equipment do you usually run on? 🏃‍</p>
 
     <form id="puzzle-form">
@@ -106,10 +106,10 @@
         return;
       }
       if (selected.value === "Treadmill") {
-        document.getElementById('resultText').innerHTML = "Correct!";
+        document.getElementById('resultText').innerHTML = "Correct! 😊";
         document.getElementById('nextStep').innerHTML = "Rumour has it that there's <b>an unique butterfly</b> in the <span class='highlight'>laundry room on the 4th floor</span>, go there and check it out! ;)";
       } else {
-        document.getElementById('resultText').innerHTML = "Incorrect. Try again!";
+        document.getElementById('resultText').innerHTML = "Incorrect. Try again! 😔";
         document.getElementById('nextStep').innerHTML = "";
       }
       document.getElementById('resultContainer').style.display = 'block';

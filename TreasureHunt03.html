@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treasure Hunt - Puzzle</title>
+  <title>Treasure Hunter - Puzzle2</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -73,8 +73,8 @@
 
 <body>
   <div class="container">
-    <h1>Treasure Hunt</h1>
-    <p><strong>Butterfly Puzzle:</strong> How many horizontal lines are inside the butterfly image?</p>
+    <h1>Treasure Hunter</h1>
+    <p><strong>Butterfly Puzzle🦋:</strong> How many horizontal lines are inside the butterfly image?</p>
 
     <form id="puzzle-form">
       <input type="number" id="butterfly-answer" placeholder="Enter a number" min="0">
@@ -91,10 +91,10 @@
     function checkButterflyAnswer() {
       const input = document.getElementById('butterfly-answer').value;
       if (parseInt(input) === 10) {
-        document.getElementById('resultText').innerHTML = "Correct!";
+        document.getElementById('resultText').innerHTML = "Correct! 😊";
         document.getElementById('nextStep').innerHTML = "Now, head to the <span class='highlight'>10th Floor</span> to find the treasure! :)";
       } else {
-        document.getElementById('resultText').innerHTML = "Incorrect. Try again!";
+        document.getElementById('resultText').innerHTML = "Incorrect. Try again! 😔";
         document.getElementById('nextStep').innerHTML = "";
       }
       document.getElementById('resultContainer').style.display = 'block';
